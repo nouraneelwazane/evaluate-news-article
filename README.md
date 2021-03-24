@@ -25,6 +25,7 @@ npm run start
 ```
 and then go to http://localhost:8081/
 
+
 ### Sample Run
 
 - In the case of an invalid URL, an invalid url warning appears to the user in red.
@@ -40,3 +41,35 @@ and then go to http://localhost:8081/
 - A run of the jest tests
 
 ![](./pictures/test_run.PNG)
+
+
+### To work in development mode
+
+- Remove the service workers script in client/views/index.html
+
+- Change in server/index.js from
+```
+app.get('/', function (req, res) {
+    res.sendFile('dist/index.html') //in production
+    //res.sendFile(path.resolve('src/client/views/index.html')) //in development
+})
+```
+
+to
+```
+app.get('/', function (req, res) {
+    //res.sendFile('dist/index.html') //in production
+    res.sendFile(path.resolve('src/client/views/index.html')) //in development
+})
+```
+
+- Run in 2 seperate terminals
+```
+npm run build-dev
+```
+and 
+```
+npm run start
+```
+
+- Then go to http://localhost:8080/
