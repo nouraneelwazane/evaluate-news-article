@@ -29,14 +29,14 @@ and then go to http://localhost:8081/
 
 - In the case of an invalid URL, an invalid url warning appears to the user in red.
 
-![](/pictures/invalid_url.png)
+![](./pictures/invalid_url.png)
 
 
 - In the case of a valid url entry, the user receives the sentiment of the article url in the form results.
 
-![](/pictures/valid_url.png)
+![](./pictures/valid_url.png)
 
 
 - A run of the jest tests
 
-![](/pictures/test_run.png)
+![](./pictures/test_run.png)
