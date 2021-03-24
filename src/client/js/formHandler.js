@@ -1,23 +1,6 @@
 import {checkForURL} from './checkURL'
 
-const post = async (url = '', data = {}) => {
-    const response = await fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    try {
-        return await response.json()
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-// update UI with user API data
+// update UI with API data
 function updateUI(data) {
     try {
         document.getElementById('text').innerHTML = data.text;
@@ -31,17 +14,25 @@ function updateUI(data) {
     }
 }
 
-export const handleSubmit = async () => {
-    let formURL = document.getElementById('article-url').value;
-    if (checkForURL(formURL) == true) {
+export function handleSubmit(){
+    let formURL = document.getElementById('article-url').value; // get the user input: url
+    if (checkForURL(formURL) == true) { // check if the user input is a valid url 
         document.getElementById('error').innerHTML="";
-        post('http://localhost:8081/addURL', {url: formURL})
-        .then(function (data) {
-            updateUI(data);
-        });
+        fetch('http://localhost:8081/addURL', { // if valid url, send a post request to the server with the url
+            method: 'POST',
+            credentials: 'same-origin',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({url: formURL})
+        })
+        .then(res => res.json()) // obtain the sentiments of the article in the url
+        .then(function(res) {
+            updateUI(res);
+        })
     }
-    else {
+    else { //in case of an invalid url update the UI with an error message
         document.getElementById('error').innerHTML="Invalid URL";
     }
 }
-

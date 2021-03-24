@@ -40,8 +40,8 @@ const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 const APIkey = process.env.API_KEY;
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html') //in production
-    res.sendFile(path.resolve('src/client/views/index.html')) //in development
+    res.sendFile('dist/index.html') //in production
+    //res.sendFile(path.resolve('src/client/views/index.html')) //in development
 })
 
 app.get('/test', function (req, res) {
@@ -79,5 +79,3 @@ app.post('/addURL', async (request, response) => {
         console.log(error.message)
     }
 })
-
-// TODO: export app to use it in the unit testing
