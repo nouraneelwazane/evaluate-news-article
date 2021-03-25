@@ -1,6 +1,6 @@
 ## Evaluate News Article  with Natural Language Processing
 
-Starter code at [Udacity](https://www.udacity.com/course/react-nanodegree--nd019).
+Starter code at [Udacity](https://github.com/udacity/fend/tree/refresh-2019/projects/evaluate-news-nlp).
 
 This project allows users to analyze an article of their choice by providing its url. The project uses the [meaning cloud API](https://www.meaningcloud.com/) to analyze the article.
 
